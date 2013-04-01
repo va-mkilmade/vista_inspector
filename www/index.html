@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--
+-->
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="jqm/jquery.mobile-1.3.0.css" />
+		<link rel="stylesheet" type="text/css" href="jqm/jquery.mobile.theme-1.3.0.css" />
+		<title>VistA Inspector</title>
+		<script type="text/javascript" src="js/cordova-2.4.0.js"></script>
+		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<!-- must be before jqm script tag -->
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="jqm/jquery.mobile-1.3.0.js"></script>
+		<script type="text/javascript">
+
+			
+		</script>
+	</head>
+
+	<body>
+
+		<section id="vi-ip-dialog" data-role="page">
+			<div data-role="content">
+				<form id="vi-ip-form" method="get" action="">
+					<label for="vi-ip">Cache Server IP Adress:</label>
+					<input type="text" name="vi-ip" id="vi-ip" value="10.1.17.116" placeholder="Enter IP Address"/>
+					<label class="ui-hidden-accessible" for="vi-ip-go-btn">Go!</label>
+					<input id="vi-ip-go-btn" type="button" name="vi-ip-go-btn" value="GO!" />
+				</form>
+			</div>
+		</section>
+
+		<section id="vi-main" data-role="page" data-theme="b" data-add-back-btn="false">
+			<header id="vi-header" class="ui-bar-d" data-role="header" data-position="fixed" >
+				<h1>VistA Inspector</h1>
+			</header>
+
+			<div id="vi-content" data-role="content">
+				<ul data-role="listview" data-inset="true">
+					<li>
+						<a href="#">Kernel</a>
+						<ul data-role="listview" data-inset="true" >
+							<li><a href="#">Overall</a></li>
+							<li>
+								<a id="vi-taskman-item" href="#vi-taskman">TaskMan</a>
+							</li>
+							<li>
+								<a href="#">Error Trap</a>
+							</li>
+							<li>
+								<a href="#">Broker</a>
+							</li>
+							<li>
+								<a href="#">Devices</a>
+							</li>
+							<li>
+								<a href="#">MenuMan</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">FileMan</a>
+					</li>
+					<li>
+						<a href="#">HL7</a>
+					</li>
+					<li>
+						<a href="#">ADT</a>
+					</li>
+				</ul>
+			</div>
+
+			<footer id="vi-footer" class="ui-bar-d" data-role="footer" data-position="fixed" >
+				<a href="#vi-ip-dialog">Change Server</a>
+			</footer>
+		</section>
+
+		<section id="vi-taskman" data-role="page" data-theme="b" >
+			<header id="vi-taskman-header" class="ui-bar-b" data-role="header" data-position="fixed">
+				<h1>TaskMan Status</h1>
+			</header>
+
+			<div data-role="content">
+				<div id="vi-taskman-results" >
+					No Results
+				</div>
+			</div>
+
+			<footer id="vi-taskman-footer" class="ui-bar-b" data-role="footer" data-position="fixed">
+				<a href="#vi-ip-dialog">Change Server</a>
+			</footer>
+		</section>
+	</body>
+</html>
