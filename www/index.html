@@ -28,18 +28,48 @@
 					<input id="vi-ip-go-btn" type="button" name="vi-ip-go-btn" value="GO!" />
 				</form>
 			</div>
+			<div data-role="footer" data-id="vi-footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#vi-ip-dialog" class="ui-btn-active ui-state-persist" data-icon="gear">Site</a></li>
+						<li><a href="#vi-main" data-icon="home">Home</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div><!-- /footer -->
 		</section>
 
 		<section id="vi-main" data-role="page" data-theme="b" data-add-back-btn="false">
-			<header id="vi-header" class="ui-bar-d" data-role="header" data-position="fixed" >
+			<header id="vi-header" class="ui-bar-b" data-role="header" data-position="fixed" >
 				<h1>VistA Inspector</h1>
 			</header>
 
 			<div id="vi-content" data-role="content"></div>
 
-			<footer id="vi-footer" class="ui-bar-d" data-role="footer" data-position="fixed" >
-				<a href="#vi-ip-dialog">Change Server</a>
-			</footer>
+			<div data-role="footer" data-id="vi-footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#vi-ip-dialog" data-icon="gear">Site</a></li>
+						<li><a href="#vi-main" class="ui-btn-active ui-state-persist" data-icon="home">Home</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div><!-- /footer -->
+		</section>
+
+		<section id="vi-kernel" data-role="page" data-theme="b" >
+			<header id="vi-kernel-header" class="ui-bar-b" data-role="header" data-position="fixed">
+				<h1>Kernel Areas</h1>
+			</header>
+
+			<div id="vi-kernel-content" data-role="content">No area</div>
+
+			<div data-role="footer" data-id="vi-footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#vi-ip-dialog" data-icon="gear">Site</a></li>
+						<li><a href="#vi-main" data-icon="home">Home</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div><!-- /footer -->
 		</section>
 
 		<section id="vi-taskman" data-role="page" data-theme="b" >
@@ -48,14 +78,69 @@
 			</header>
 
 			<div data-role="content">
-				<div id="vi-taskman-results" >
-					No Results
-				</div>
+				<div id="vi-taskman-results">No Results</div>
 			</div>
 
-			<footer id="vi-taskman-footer" class="ui-bar-b" data-role="footer" data-position="fixed">
-				<a href="#vi-ip-dialog">Change Server</a>
-			</footer>
+			<div data-role="footer" data-id="vi-footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#vi-ip-dialog" data-icon="gear">Site</a></li>
+						<li><a href="#vi-main" data-icon="home">Home</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div><!-- /footer -->
 		</section>
+		
+		<section id="vi-fileman" data-role="page" data-theme="b" >
+			<header id="vi-fileman-header" class="ui-bar-b" data-role="header" data-position="fixed">
+				<h1>FileMan Areas</h1>
+			</header>
+
+			<div data-role="content" id="vi-fileman-content">No area</div>
+
+			<div data-role="footer" data-id="vi-footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#vi-ip-dialog" data-icon="gear">Site</a></li>
+						<li><a href="#vi-main" data-icon="home">Home</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div><!-- /footer -->
+		</section>
+
+		<section id="vi-adt" data-role="page" data-theme="b" >
+			<header id="vi-adt-header" class="ui-bar-b" data-role="header" data-position="fixed">
+				<h1>ADT Areas</h1>
+			</header>
+
+			<div data-role="content" id="vi-adt-content">No area</div>
+
+			<div data-role="footer" data-id="vi-footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#vi-ip-dialog" data-icon="gear">Site</a></li>
+						<li><a href="#vi-main" data-icon="home">Home</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div><!-- /footer -->
+		</section>
+
+		<section id="vi-hl7" data-role="page" data-theme="b" >
+			<header id="vi-hl7-header" class="ui-bar-b" data-role="header" data-position="fixed">
+				<h1>HL7 Areas</h1>
+			</header>
+
+			<div data-role="content" id="vi-hl7-content">No area</div>
+
+			<div data-role="footer" data-id="vi-footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#vi-ip-dialog" data-icon="gear">Site</a></li>
+						<li><a href="#vi-main" data-icon="home">Home</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div><!-- /footer -->
+		</section>
+
 	</body>
 </html>

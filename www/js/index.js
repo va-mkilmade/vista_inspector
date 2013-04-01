@@ -24,9 +24,11 @@ function buildPaths() {
 		// build html for content role
 		var x = '<ul data-role="listview" data-inset="true">';
 		for (var i = 0; i < data.areas.length; i++) {
-			x = x + '<li><a href="#">' + data.areas[i].text + '</a>';
+			var areaPageId = 'vi-' + data.areas[i].id;
+			var areaContentId = 'vi-' + data.areas[i].id + '-content';
+			x = x + '<li><a href="#' + areaPageId + '">' + data.areas[i].text + '</a></li>';
 			if (data.areas[i].hasOwnProperty("items")) {
-				x = x + '<ul data-role="listview" data-inset="true">';
+				var y = '<ul data-role="listview" data-inset="true">';
 				for (var j = 0; j < data.areas[i].items.length; j++) {
 					var text = "";
 					var id = "";
@@ -39,13 +41,18 @@ function buildPaths() {
 									id = "vi-" + data.areas[i].items[j][key];
 								} // if id
 							} // else
-						}// hasOwnProperty key
+						}// hasOwnProperty (key)
 					} // for key
-				x = x + '<li><a id="' + id + '-item" href="#' + id + '">' + text + '</a></li>';
+				y = y + '<li><a id="' + id + '-item" href="#' + id + '">' + text + '</a></li>';
 				} // for j
-			x = x + "</ul>"	
-			} // hasOwnProperty items
-			x = x + "</li>";
+			y = y + "</ul>"
+			$("#" + areaContentId).html(y);
+			/*  needed?
+			$('#' + areaPageId).on('pageinit', function(event) {
+			    $("#areaContentId").trigger("create");
+			});
+			*/
+			} // hasOwnProperty (items)
 		};// for i
 		x = x + "</ul>";
 		$("#vi-content").html(x);
@@ -65,13 +72,13 @@ function buildPaths() {
 									id = "vi-" + data.areas[i].items[j][key] + '-item';
 								} // if id
 							} // else
-						}// if hasOwnProperty key
+						}// if hasOwnProperty (key)
 					} // for key
 				if (window[func]) {
 					$("#" + id ).click(window[func]);
 				} // click binding
 				} // for j
-			} // hasOwnProperty items
+			} // hasOwnProperty (items)
 		} // for i
 	});//getJSON
 }
