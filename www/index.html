@@ -20,10 +20,14 @@
 	<body>
 
 		<section id="vi-ip-dialog" data-role="page">
+			<header id="vi-ip-dialog-header" data-role="header" data-position="fixed" >
+				<h1>Enter IP Address</h1>
+			</header>
+
 			<div data-role="content">
 				<form id="vi-ip-form" method="get" action="">
-					<label for="vi-ip">Cache Server IP Adress:</label>
-					<input type="text" name="vi-ip" id="vi-ip" value="10.1.17.116" placeholder="Enter IP Address"/>
+					<label for="vi-ip">Cache Server IP Address:</label>
+					<input type="text" name="vi-ip" id="vi-ip" placeholder="10.1.17.116"/>
 					<label class="ui-hidden-accessible" for="vi-ip-go-btn">Go!</label>
 					<input id="vi-ip-go-btn" type="button" name="vi-ip-go-btn" value="GO!" />
 				</form>
@@ -31,15 +35,18 @@
 			<div data-role="footer" data-id="vi-footer" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#vi-ip-dialog" class="ui-btn-active ui-state-persist" data-icon="gear">Site</a></li>
-						<li><a href="#vi-main" data-icon="home">Home</a></li>
-					</ul>
+						<li><a href="#vi-ip-dialog" class="ui-disabled" data-icon="custom" id="siteicon">Site</a></li>
+						<li><a href="#vi-main" class="ui-disabled" data-icon="home" id="inspectoricon">Inspector</a></li>
+						<li><a href="#vi-kernel" class="ui-disabled"  data-icon="gear" id="kernelicon">Kernel</a></li>
+						<li><a href="#vi-fileman" class="ui-disabled"  data-icon="custom" id="filemanicon">FileMan</a></li>
+						<li><a href="#vi-hl7" class="ui-disabled"  data-icon="custom" id="hl7icon">HL7</a></li>
+				</ul>
 				</div><!-- /navbar -->
 			</div><!-- /footer -->
 		</section>
 
-		<section id="vi-main" data-role="page" data-theme="b" data-add-back-btn="false">
-			<header id="vi-header" class="ui-bar-b" data-role="header" data-position="fixed" >
+		<section id="vi-main" data-role="page" data-add-back-btn="false">
+			<header id="vi-header" data-role="header" data-position="fixed" >
 				<h1>VistA Inspector</h1>
 			</header>
 
@@ -48,15 +55,18 @@
 			<div data-role="footer" data-id="vi-footer" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#vi-ip-dialog" data-icon="gear">Site</a></li>
-						<li><a href="#vi-main" class="ui-btn-active ui-state-persist" data-icon="home">Home</a></li>
+						<li><a href="#vi-ip-dialog" data-icon="custom" id="siteicon">Site</a></li>
+						<li><a href="#vi-main" class="ui-btn-active ui-state-persist" data-icon="home">Inspector</a></li>
+						<li><a href="#vi-kernel" data-icon="gear">Kernel</a></li>
+						<li><a href="#vi-fileman" data-icon="custom" id="filemanicon">FileMan</a></li>
+						<li><a href="#vi-hl7" data-icon="custom" id="hl7icon">HL7</a></li>
 					</ul>
 				</div><!-- /navbar -->
 			</div><!-- /footer -->
 		</section>
 
-		<section id="vi-kernel" data-role="page" data-theme="b" >
-			<header id="vi-kernel-header" class="ui-bar-b" data-role="header" data-position="fixed">
+		<section id="vi-kernel" data-role="page" >
+			<header id="vi-kernel-header" data-role="header" data-position="fixed">
 				<h1>Kernel Areas</h1>
 			</header>
 
@@ -65,15 +75,18 @@
 			<div data-role="footer" data-id="vi-footer" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#vi-ip-dialog" data-icon="gear">Site</a></li>
-						<li><a href="#vi-main" data-icon="home">Home</a></li>
+						<li><a href="#vi-ip-dialog" data-icon="custom" id="siteicon">Site</a></li>
+						<li><a href="#vi-main" data-icon="home">Inspector</a></li>
+						<li><a href="#vi-kernel" class="ui-btn-active ui-state-persist" data-icon="gear">Kernel</a></li>
+						<li><a href="#vi-fileman" data-icon="custom" id="filemanicon">FileMan</a></li>
+						<li><a href="#vi-hl7" data-icon="custom" id="hl7icon">HL7</a></li>
 					</ul>
 				</div><!-- /navbar -->
 			</div><!-- /footer -->
 		</section>
 
-		<section id="vi-taskman" data-role="page" data-theme="b" >
-			<header id="vi-taskman-header" class="ui-bar-b" data-role="header" data-position="fixed">
+		<section id="vi-taskman" data-role="page" >
+			<header id="vi-taskman-header" data-role="header" data-position="fixed">
 				<h1>TaskMan Status</h1>
 			</header>
 
@@ -84,15 +97,18 @@
 			<div data-role="footer" data-id="vi-footer" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#vi-ip-dialog" data-icon="gear">Site</a></li>
-						<li><a href="#vi-main" data-icon="home">Home</a></li>
+						<li><a href="#vi-ip-dialog" data-icon="custom" id="siteicon">Site</a></li>
+						<li><a href="#vi-main" data-icon="home">Inspector</a></li>
+						<li><a href="#vi-kernel" data-icon="gear">Kernel</a></li>
+						<li><a href="#vi-fileman" data-icon="custom" id="filemanicon">FileMan</a></li>
+						<li><a href="#vi-hl7" data-icon="custom" id="hl7icon">HL7</a></li>
 					</ul>
 				</div><!-- /navbar -->
 			</div><!-- /footer -->
 		</section>
 		
-		<section id="vi-fileman" data-role="page" data-theme="b" >
-			<header id="vi-fileman-header" class="ui-bar-b" data-role="header" data-position="fixed">
+		<section id="vi-fileman" data-role="page" >
+			<header id="vi-fileman-header" data-role="header" data-position="fixed">
 				<h1>FileMan Areas</h1>
 			</header>
 
@@ -101,15 +117,18 @@
 			<div data-role="footer" data-id="vi-footer" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#vi-ip-dialog" data-icon="gear">Site</a></li>
-						<li><a href="#vi-main" data-icon="home">Home</a></li>
+						<li><a href="#vi-ip-dialog" data-icon="custom" id="siteicon">Site</a></li>
+						<li><a href="#vi-main" data-icon="home">Inspector</a></li>
+						<li><a href="#vi-kernel" data-icon="gear">Kernel</a></li>
+						<li><a href="#vi-fileman" class="ui-btn-active ui-state-persist" data-icon="custom" id="filemanicon">FileMan</a></li>
+						<li><a href="#vi-hl7" data-icon="custom" id="hl7icon">HL7</a></li>
 					</ul>
 				</div><!-- /navbar -->
 			</div><!-- /footer -->
 		</section>
 
-		<section id="vi-adt" data-role="page" data-theme="b" >
-			<header id="vi-adt-header" class="ui-bar-b" data-role="header" data-position="fixed">
+		<section id="vi-adt" data-role="page" >
+			<header id="vi-adt-header" data-role="header" data-position="fixed">
 				<h1>ADT Areas</h1>
 			</header>
 
@@ -118,15 +137,18 @@
 			<div data-role="footer" data-id="vi-footer" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#vi-ip-dialog" data-icon="gear">Site</a></li>
-						<li><a href="#vi-main" data-icon="home">Home</a></li>
+						<li><a href="#vi-ip-dialog" data-icon="custom" id="siteicon">Site</a></li>
+						<li><a href="#vi-main" data-icon="home">Inspector</a></li>
+						<li><a href="#vi-kernel" data-icon="gear">Kernel</a></li>
+						<li><a href="#vi-fileman" data-icon="custom" id="filemanicon">FileMan</a></li>
+						<li><a href="#vi-hl7" data-icon="custom" id="hl7icon">HL7</a></li>
 					</ul>
 				</div><!-- /navbar -->
 			</div><!-- /footer -->
 		</section>
 
-		<section id="vi-hl7" data-role="page" data-theme="b" >
-			<header id="vi-hl7-header" class="ui-bar-b" data-role="header" data-position="fixed">
+		<section id="vi-hl7" data-role="page" >
+			<header id="vi-hl7-header" data-role="header" data-position="fixed">
 				<h1>HL7 Areas</h1>
 			</header>
 
@@ -135,8 +157,11 @@
 			<div data-role="footer" data-id="vi-footer" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#vi-ip-dialog" data-icon="gear">Site</a></li>
-						<li><a href="#vi-main" data-icon="home">Home</a></li>
+						<li><a href="#vi-ip-dialog" data-icon="custom" id="siteicon">Site</a></li>
+						<li><a href="#vi-main" data-icon="home">Inspector</a></li>
+						<li><a href="#vi-kernel" data-icon="gear">Kernel</a></li>
+						<li><a href="#vi-fileman" data-icon="custom" id="filemanicon">FileMan</a></li>
+						<li><a href="#vi-hl7" class="ui-btn-active ui-state-persist" data-icon="custom" id="hl7icon">HL7</a></li>
 					</ul>
 				</div><!-- /navbar -->
 			</div><!-- /footer -->

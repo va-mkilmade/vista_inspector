@@ -6,16 +6,18 @@ var username = "xxx";
 var password = "yyy";
 var params = "";
 var ip = "";
+var defaultIp = "10.1.17.116";
 
 $("document").ready(function() {
-	$("#vi-ip-go-btn").click(onGo);	//buildPaths();
+	$("#vi-ip-go-btn").click(onGo);
 });
 
 $(document).bind("mobileinit", function() {
 	$.mobile.page.prototype.options.addBackBtn = true;
+	$.mobile.loader.prototype.options.text = "Loading VistA Inspector...";
+	$.mobile.loader.prototype.options.textVisible = "true";
+	$.mobile.loader.prototype.options.theme = "b";
 });
-
-
 
 function buildPaths() {
 	$("#vi-content").html("");
@@ -47,11 +49,9 @@ function buildPaths() {
 				} // for j
 			y = y + "</ul>"
 			$("#" + areaContentId).html(y);
-			/*  needed?
-			$('#' + areaPageId).on('pageinit', function(event) {
-			    $("#areaContentId").trigger("create");
+			$('#' + areaPageId).on('pagebeforeshow', {value : areaContentId}, function(event) {
+			    $("#" + event.data.value).trigger("create");
 			});
-			*/
 			} // hasOwnProperty (items)
 		};// for i
 		x = x + "</ul>";
@@ -84,7 +84,11 @@ function buildPaths() {
 }
 
 function onGo() {
-	ip =$("#vi-ip").val();
+	ip = $("#vi-ip").val();
+	if (ip === "") {
+		ip = defaultIp;
+		$("#vi-ip").val(ip);
+	}
 	buildPaths();
 	$.mobile.changePage("#vi-main");
 }

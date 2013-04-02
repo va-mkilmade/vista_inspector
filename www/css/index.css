@@ -235,3 +235,26 @@ background: #F2F2F2;
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+
+#siteicon .ui-icon-custom {
+	background-image: url("../img/outlet.png");
+	background-color:#FFFFFF;
+	background-position: 2px 2px;
+	background-size: 90%;
+	-webkit-filter: invert(100%);
+}
+
+#filemanicon .ui-icon-custom {
+	background-image: url("../img/wrench.png");
+	background-color:#FFFFFF;
+	background-position: 2px 2px;
+	background-size: 90%;
+}
+
+#hl7icon .ui-icon-custom {
+	background-image: url("../img/network.png");
+	background-color:#FFFFFF;
+	background-position: 2px 2px;
+	background-size: 90%;
+}
+
