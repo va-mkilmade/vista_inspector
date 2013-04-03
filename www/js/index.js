@@ -1,16 +1,7 @@
-/*
- */
+// url for reference "http://10.1.17.116:57772/csp/cpm/vi.paths.cls";
 
-//var url = "http://10.1.17.116:57772/csp/cpm/TestPull.cls";
-var username = "xxx";
-var password = "yyy";
-var params = "";
-var ip = "";
-var defaultIp = "10.1.17.116";
-
-$("document").ready(function() {
-	$("#vi-ip-go-btn").click(onGo);
-});
+var deflt = {"ip" : "10.1.17.116", "port" : "57772", "namespace" : "cpm"};
+var site = {"ip" : "", "port" : "", "namespace" : ""};
 
 $(document).bind("mobileinit", function() {
 	$.mobile.page.prototype.options.addBackBtn = true;
@@ -18,6 +9,30 @@ $(document).bind("mobileinit", function() {
 	$.mobile.loader.prototype.options.textVisible = "true";
 	$.mobile.loader.prototype.options.theme = "b";
 });
+
+$("document").ready(function() {
+	$("#vi-ip-go-btn").click(onGo);
+});
+
+function onGo() {
+	site.ip = $("#vi-ip").val();
+	if (site.ip === "") {
+		site.ip = deflt.ip;
+		$("#vi-ip").val(site.ip);
+	}
+	site.port = $("#vi-port").val();
+	if (site.port === "") {
+		site.port = deflt.port;
+		$("#vi-port").val(site.port);
+	}
+	site.namespace = $("#vi-namespace").val();
+	if (site.namespace === "") {
+		site.namespace = deflt.namespace;
+		$("#vi-namespace").val(site.namespace);
+	}
+	buildPaths();
+	$.mobile.changePage("#vi-main");
+}
 
 function buildPaths() {
 	$("#vi-content").html("");
@@ -83,22 +98,68 @@ function buildPaths() {
 	});//getJSON
 }
 
-function onGo() {
-	ip = $("#vi-ip").val();
-	if (ip === "") {
-		ip = defaultIp;
-		$("#vi-ip").val(ip);
-	}
-	buildPaths();
-	$.mobile.changePage("#vi-main");
-}
-
 function buildUrl(area) {
-	var port = "57772";
-	var rest = "csp/cpm/vi." + area + ".cls";
-	return "http://" + ip + ":" + port + "/" + rest;
+	return "http://" + site.ip + ":" + site.port + "/csp/" + site.namespace + "/vi." + area + ".cls";
 }
 
+function doTaskMan() {
+	$("#vi-taskman-results").html("");
+	var url = buildUrl("taskman");
+	$.getJSON(url, function(data) {
+		var x = ""
+		x = x + "Run date/time: " + data.date
+		x = x + "<table><thead><tr><th>TM OS Item</th><th>Status</th></tr></thead>";
+		// insert os env properties
+		x = x + "<tr><td>OS</td><td>" + data.os.os + "</td></tr>";
+		x = x + "<tr><td>Volume Set</td><td>" + data.os.volset + "</td></tr>";
+		x = x + "<tr><td>Cpu:Volume Pair</td><td>" + data.os.cpuvol + "</td></tr>";
+		x = x + "<tr><td>TM Files UCI,Volume Set</td><td>" + data.os.ucivol + "</td></tr>";
+		x = x + "<tr><td>Log Tasks?</td><td>" + data.os.logtasks + "</td></tr>";
+		if (data.os.hasOwnProperty("partsize")) {
+		x = x + "<tr><td>Task Partition Size</td><td>" + data.os.partsize + "</td></tr>";
+		}
+		x = x + "<tr><td>Submgr Retention</td><td>" + data.os.retention + "</td></tr>";
+		x = x + "<tr><td>Min# Submgrs</td><td>" + data.os.minsubmgrs + "</td></tr>";
+		x = x + "<tr><td>Hang Between New Jobs</td><td>" + data.os.hangtime + "</td></tr>";
+		x = x + "<tr><td>TM Run Type</td><td>" + data.os.runtype + "</td></tr>";
+		if (data.os.hasOwnProperty("vaxenv")) {
+			x = x + "<tr><td>TM VAX enviroment</td><td>" + data.os.vaxenv + "</td></tr>";
+		}
+		if (data.os.hasOwnProperty("loadbalancing")) {
+			x = x + "<tr><td>TM Load Balancing Type</td><td>" + data.os.loadbalancing + "</td></tr>";
+		}
+		if (data.os.hasOwnProperty("balanceinterval")) {
+			x = x + "<tr><td>Balance Interval</td><td>" + data.os.balanceinterval + "</td></tr>";
+		}
+		x = x + "<tr><td>Logons Inhibited?</td><td>" + data.os.inhibited + "</td></tr>";
+		x = x + "<tr><td>TM Job Limit</td><td>" + data.os.limit + "</td></tr>";
+		if (data.os.hasOwnProperty("max")) {
+			x = x + "<tr><td>Max sign-ons</td><td>" + data.os.max + "</td></tr>";
+		}
+		x = x + "<tr><td>Active Jobs</td><td>" + data.os.activejobs + "</td></tr>";
+		x = x + "<tr><td>Linked VolSets</td><td>" + data.os.linkedvolsets + "</td></tr>";
+		// insert TM global node statuses
+		x = x + "<thead><tr><th>TM Global</th><th>Status</th></tr></thead>";
+		for (var i = 0; i < data.nodes.length; i++) {
+			for (key in data.nodes[i]) {
+				if (data.nodes[i].hasOwnProperty(key)) {
+					if (key === "node") {
+						var node = data.nodes[i][key];
+					} else {
+						if (key === "value") {
+							var value = data.nodes[i][key];
+						} // if value
+					} // if node
+				} // if hasOwnProperty
+			} // for key
+			x = x + "<tr><td>" + node + "</td><td>" + value + "</td></tr>";
+		}; // for i
+		x = x + "</table>";
+		$("#vi-taskman-results").html(x);
+	}); //getJSON
+}
+
+/* Not used code
 function buildCredentials(user, password) {
 	var tok = user + ':' + password;
 	var hash = btoa(tok);
@@ -107,6 +168,8 @@ function buildCredentials(user, password) {
 
 function doHttpRequest() {
 	$("#vi-taskman-results").html("");
+	var username = "xxx";
+	var password = "yyy";
 	var request = $.ajax({
 		beforeSend : function(xhrObj) {
 			xhrObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -114,7 +177,7 @@ function doHttpRequest() {
 		},
 		url : buildUrl("taskman"),
 		type : "post",
-		data : params
+		data : ""
 	});
 
 	// callback handler that will be called on success
@@ -151,31 +214,4 @@ function doHttpRequest() {
 	});
 
 }
-
-function doTaskMan() {
-	$("#vi-taskman-results").html("");
-	var url = buildUrl("taskman");
-	$.getJSON(url, function(data) {
-		var x = ""
-		x = x + "Run date/time: " + data.date
-		x = x + "<table id='table-2'>"
-		x = x + "<thead><tr><th>Global</th><th>Status</th></tr></thead>";
-		for (var i = 0; i < data.nodes.length; i++) {
-			for (key in data.nodes[i]) {
-				if (data.nodes[i].hasOwnProperty(key)) {
-					if (key === "node") {
-						var node = data.nodes[i][key];
-					} else {
-						if (key === "value") {
-							var value = data.nodes[i][key];
-						} // if value
-					} // if node
-				} // if hasOwnProperty
-			} // for key
-			x = x + "<tr><td>" + node + "</td><td>" + value + "</td></tr>";
-		}; // for i
-		x = x + "</table>";
-		$("#vi-taskman-results").html(x);
-	}); //getJSON
-}
-
+Not used code */
