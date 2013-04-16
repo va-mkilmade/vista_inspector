@@ -132,7 +132,7 @@ function getTaskManPropertiesText(data) {
     // insert os env properties
     x = x + buildRow("OS", data.os.os);
     x = x + buildRow("Volume Set", data.os.volset);
-    x = x + buildRow("Cpu:Volume Pair<", data.os.cpuvol);
+    x = x + buildRow("Cpu:Volume Pair", data.os.cpuvol);
     x = x + buildRow("TM Files UCI,VolSet", data.os.ucivol);
     x = x + buildRow("Log Tasks?", data.os.logtasks);
     if (data.os.hasOwnProperty("partsize")) {
